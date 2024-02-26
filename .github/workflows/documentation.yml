@@ -41,10 +41,10 @@ jobs:
           echo -e "Workflow Run ID: ${{ github.run_id }}\n" >> my_docusaurus_project/docs/log.md
           echo -e "URL: [View Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n" >> my_docusaurus_project/docs/log.md
     
-          if [ ${{ steps.generate-docs.outcome }} == "success" ]; then
-            echo -e "Status: Documentation generation successful\n" >> my_docusaurus_project/docs/log.md
+          if [[ "${{ steps.generate-docs.outcome }}" == "success" ]]; then
+            echo -e "Status: Success\n" >> my_docusaurus_project/docs/log.md
           else
-            echo -e "Status: Documentation generation failed\n" >> my_docusaurus_project/docs/log.md
+            echo -e "Status: Failed\n" >> my_docusaurus_project/docs/log.md
             echo -e "Failure by: ${{ github.actor }}\n" >> my_docusaurus_project/docs/log.md
           fi
 
