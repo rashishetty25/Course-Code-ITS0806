@@ -32,25 +32,25 @@ jobs:
 
       - name: Update Log Document
         run: |
-          echo "### $(TZ='Asia/Kolkata' date)" >> my-docusaurus-project/docs/log.md
-          echo -e "Message: $(git log --format=%B -n 1 $GITHUB_SHA)\n" >> my-docusaurus-project/docs/log.md
-          echo -e "Author: $(git log --format=%an -n 1 $GITHUB_SHA)\n" >> my-docusaurus-project/docs/log.md
-          echo -e "Author Email: $(git log --format=%ae -n 1 $GITHUB_SHA)\n" >> my-docusaurus-project/docs/log.md
-          echo -e "Branch: $GITHUB_REF\n" >> my-docusaurus-project/docs/log.md
-          echo -e "Repository: ${{ github.repository }}\n" >> my-docusaurus-project/docs/log.md
-          echo -e "Workflow Run ID: ${{ github.run_id }}\n" >> my-docusaurus-project/docs/log.md
+          echo "### $(TZ='Asia/Kolkata' date)" >> my_docusaurus_project/docs/log.md
+          echo -e "Message: $(git log --format=%B -n 1 $GITHUB_SHA)\n" >> my_docusaurus_project/docs/log.md
+          echo -e "Author: $(git log --format=%an -n 1 $GITHUB_SHA)\n" >> my_docusaurus_project/docs/log.md
+          echo -e "Author Email: $(git log --format=%ae -n 1 $GITHUB_SHA)\n" >> my_docusaurus_project/docs/log.md
+          echo -e "Branch: $GITHUB_REF\n" >> my_docusaurus_project/docs/log.md
+          echo -e "Repository: ${{ github.repository }}\n" >> my_docusaurus_project/docs/log.md
+          echo -e "Workflow Run ID: ${{ github.run_id }}\n" >> my_docusaurus_project/docs/log.md
           if [ ${{ steps.generate-docs.outcome }} == "success" ]; then
-            echo -e "Status: Documentation generation successful\n" >> my-docusaurus-project/docs/log.md
-            echo -e "URL: [View Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n" >> my-docusaurus-project/docs/log.md
+            echo -e "Status: Documentation generation successful\n" >> my_docusaurus_project/docs/log.md
+            echo -e "URL: [View Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n" >> my_docusaurus_project/docs/log.md
           else
-            echo -e "Status: Documentation generation failed\n" >> my-docusaurus-project/docs/log.md
-            echo -e "Failure by: ${{ github.actor }}\n" >> my-docusaurus-project/docs/log.md
+            echo -e "Status: Documentation generation failed\n" >> my_docusaurus_project/docs/log.md
+            echo -e "Failure by: ${{ github.actor }}\n" >> my_docusaurus_project/docs/log.md
           fi
 
       - name: Commit and Push Changes
         run: |
           git config --global user.email "rashishetty25@gmail.com"
           git config --global user.name "rashishetty25"
-          git add my-docusaurus-project/docs/log.md
+          git add my_docusaurus_project/docs/log.md
           git commit -m "Update documentation log [skip ci]"
           git push origin main
