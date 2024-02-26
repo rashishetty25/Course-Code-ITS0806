@@ -41,7 +41,7 @@ jobs:
           echo -e "Workflow Run ID: ${{ github.run_id }}\n" >> my_docusaurus_project/docs/log.md
           echo -e "URL: [View Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n" >> my_docusaurus_project/docs/log.md
     
-          if [[ "${{ steps.generate-docs.outcome }}" == "success" ]]; then
+          if git log --format=%B -n 1 $GITHUB_SHA; then
             echo -e "Status: Success\n" >> my_docusaurus_project/docs/log.md
           else
             echo -e "Status: Failed\n" >> my_docusaurus_project/docs/log.md
