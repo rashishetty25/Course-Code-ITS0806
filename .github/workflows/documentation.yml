@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
 
@@ -33,20 +33,13 @@ jobs:
       - name: Update Log Document
         run: |
           echo "### $(TZ='Asia/Kolkata' date)" >> my_docusaurus_project/docs/log.md
-          echo -e "Message: $(git log --format=%B -n 1 $GITHUB_SHA)\n" >> my_docusaurus_project/docs/log.md
-          echo -e "Author: $(git log --format=%an -n 1 $GITHUB_SHA)\n" >> my_docusaurus_project/docs/log.md
-          echo -e "Author Email: $(git log --format=%ae -n 1 $GITHUB_SHA)\n" >> my_docusaurus_project/docs/log.md
-          echo -e "Branch: $GITHUB_REF\n" >> my_docusaurus_project/docs/log.md
-          echo -e "Repository: ${{ github.repository }}\n" >> my_docusaurus_project/docs/log.md
-          echo -e "Workflow Run ID: ${{ github.run_id }}\n" >> my_docusaurus_project/docs/log.md
-          echo -e "URL: [View Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n" >> my_docusaurus_project/docs/log.md
-    
-          if git log --format=%B -n 1 $GITHUB_SHA &>/dev/null; then
-            echo -e "Status: Success\n" >> my_docusaurus_project/docs/log.md
-          else
-            echo -e "Status: Failed\n" >> my_docusaurus_project/docs/log.md
-            echo -e "Failure by: ${{ github.actor }}\n" >> my_docusaurus_project/docs/log.md
-          fi
+          echo "Message: $(git log --format=%B -n 1 $GITHUB_SHA)\n" >> my_docusaurus_project/docs/log.md
+          echo "Author: $(git log --format=%an -n 1 $GITHUB_SHA)\n" >> my_docusaurus_project/docs/log.md
+          echo "Author Email: $(git log --format=%ae -n 1 $GITHUB_SHA)\n" >> my_docusaurus_project/docs/log.md
+          echo "Branch: $GITHUB_REF\n" >> my_docusaurus_project/docs/log.md
+          echo "Repository: ${{ github.repository }}\n" >> my_docusaurus_project/docs/log.md
+          echo "Workflow Run ID: ${{ github.run_id }}\n" >> my_docusaurus_project/docs/log.md
+          echo "URL: [View Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n" >> my_docusaurus_project/docs/log.md
 
       - name: Commit and Push Changes
         run: |
