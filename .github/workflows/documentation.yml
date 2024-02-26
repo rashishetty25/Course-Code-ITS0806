@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd my-docusaurus-project
+          cd my_docusaurus_project
           npm install
 
       - name: Generate Documentation
