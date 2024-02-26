@@ -26,7 +26,7 @@ jobs:
       - name: Generate Documentation
         id: generate-docs
         run: |
-          cd my-docusaurus-project
+          cd my_docusaurus_project
           npx docusaurus build
         continue-on-error: true
 
