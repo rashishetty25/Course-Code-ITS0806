@@ -1,4 +1,4 @@
 # Course Code: ITS0806
 Elective course: Cloud Computing
 
-[View PDF](./CC-github-ppt.pdf)
+<iframe src="./CC-github-ppt.pdf" width="100%" height="500px"></iframe>
